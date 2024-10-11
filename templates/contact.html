@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+{%block title%}contact{%endblock title%}
+{%block content%}
+<h1 class="text-center">contact us</h1>
+<div class="container mt-2">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-4">
+            {% for message in messages%}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
+                </div>
+                {% endfor%}
+            <form action="/contact/" method="post">
+                {% csrf_token %}
+        <lable for="email">Full Name</lable>
+        <div class="form-group">
+            <input type="text"
+               class="form-control p-2"
+               id="name"
+               name="name"
+               required/>
+        </div>
+        <lable for="email">Email</lable>
+        <div class="form-group">
+            <input type="email"
+               class="form-control p-2"
+               id="email"
+               value="{{user.email}}"
+               name="email"
+               required/>
+        </div>
+        <lable for="email">Phone Number</lable>
+        <div class="form-group">
+            <input type="number"
+               class="form-control p-2"
+               id="number"
+               name="number"
+               required/>
+        </div>
+        <lable for="email">How can i help you ?</lable>
+        <div class="form-group">
+           <textarea type="text"
+               class="form-control p-2"
+               id="desc"
+               name="desc"
+               required>    
+            </textarea> 
+        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+    </div>
+            
+        </lable>
+        <div class="col"></div>
+    </div>
+
+{%endblock content%}
